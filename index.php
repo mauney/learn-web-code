@@ -5,7 +5,12 @@ get_header();
 if (have_posts()) :
     while (have_posts()) : the_post(); ?>
 
-    <article class="post">
+    <article class="post <?php if ( has_post_thumbnail() ) { ?>has-thumbnail<?php } ?>">
+
+        <div class="post-thumbnail">
+            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('small-thumbnail'); ?></a>
+        </div>
+
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
         <p class="post-info">
@@ -31,8 +36,11 @@ if (have_posts()) :
 
         </p>
         
-        <?php echo get_the_excerpt(); ?>
-        <a href="<?php the_permalink() ?>">Read more&raquo;</a>
+        <p>
+            <?php echo get_the_excerpt(); ?>
+            <a href="<?php the_permalink() ?>">Read more&raquo;</a>
+        </p>
+
     </article>
 
 <?php endwhile;
