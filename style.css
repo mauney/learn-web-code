@@ -259,3 +259,7 @@ img {
     top: 0;
     left: 0;
 }
+
+.target-test {
+    color: red;
+}
